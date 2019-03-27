@@ -17,7 +17,7 @@ class BinarySearchTree
   end
 
   def include?(weight)
-    conclusion = {weight_found: false}
+    conclusion = {weight_found: false, depth: 0}
 
     @node.has_weight?(weight, conclusion)
 
@@ -25,6 +25,11 @@ class BinarySearchTree
   end
 
   def depthof(weight)
+    conclusion = {weight_found: false, depth: 0}
+
+    @node.has_weight?(weight, conclusion)
+
+    conclusion[:depth] if conclusion[:weight_found]
   end
 
   def max

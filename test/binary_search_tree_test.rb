@@ -40,4 +40,10 @@ class BinarySearchTreeTest < MiniTest::Test
     refute tree_2.include?(21)
   end
 
+  def test_it_should_return_depth_of_weight_or_nil
+    assert_equal 1, tree_2.depthof(61)
+    assert_equal 0, tree_2.depthof(5)
+    refute tree_2.depthof(9999)
+  end
+
 end

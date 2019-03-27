@@ -38,14 +38,14 @@ class NodeTest < MiniTest::Test
   end
 
   def test_it_should_return_if_has_weight_or_not
-    conclusion =  {weight_found: false}
+    conclusion =  {weight_found: false, depth: 0}
     node_2.has_weight?(5, conclusion)
 
     assert conclusion[:weight_found]
   end
 
   def test_it_should_return_false_if_weight_not_found
-    conclusion = {weight_found: false}
+    conclusion = {weight_found: false, depth: 0}
     node_2.has_weight?(555, conclusion)
 
     refute conclusion[:weight_found]

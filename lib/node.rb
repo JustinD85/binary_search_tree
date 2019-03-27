@@ -44,6 +44,8 @@ class Node
   end
 
   def has_weight?(weight, conclusion)
+    conclusion[:depth] += 1 unless @weight == weight
+
     if @weight == weight
       conclusion[:weight_found] = true
     elsif @right_node && weight > @weight
