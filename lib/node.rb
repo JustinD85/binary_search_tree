@@ -63,4 +63,12 @@ class Node
     end
   end
 
+  def assign_to_lightest_node(conclusion)
+    if @left_node
+      @left_node.assign_to_lightest_node(conclusion)
+    else
+      conclusion[:lightest_node] = { name => weight}
+    end
+  end
+
 end

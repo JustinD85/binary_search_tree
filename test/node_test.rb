@@ -56,4 +56,11 @@ class NodeTest < MiniTest::Test
     expected = {"Sharknado 3"=>92}
     assert_equal expected, conclusion[:heaviest_node]
   end
+
+  def test_it_should_assign_itself_to_lightest_node
+    node_2.assign_to_lightest_node(conclusion)
+    expected = {"bob"=>5}
+    assert_equal expected, conclusion[:lightest_node]
+  end
+
 end

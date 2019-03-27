@@ -43,6 +43,11 @@ class BinarySearchTree
   end
 
   def min
+    conclusion = Util.values_for_conclusion
+
+    @node.assign_to_lightest_node(conclusion)
+
+    conclusion[:lightest_node]
   end
 
   def sort

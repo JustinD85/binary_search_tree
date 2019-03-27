@@ -51,4 +51,8 @@ class BinarySearchTreeTest < MiniTest::Test
     assert_equal expected, tree_2.max
   end
 
+  def test_it_should_return_the_lowest_weight_in_tree
+    expected = {"bob"=>5}
+    assert_equal expected, tree_2.min
+  end
 end
