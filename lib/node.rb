@@ -43,4 +43,14 @@ class Node
     end
   end
 
+  def has_weight?(weight, conclusion)
+    if @weight == weight
+      conclusion[:weight_found] = true
+    elsif @right_node && weight > @weight
+      @right_node.has_weight?(weight, conclusion)
+    elsif @left_node && weight < @weight
+      @left_node.has_weight?(weight, conclusion)
+    end
+  end
+
 end
