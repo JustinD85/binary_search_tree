@@ -21,11 +21,11 @@ class NodeTest < MiniTest::Test
   end
 
   def test_it_should_be_able_to_add_node
-    node.add_node(4, "Karen")
+    node.add_node(4, "Karen", {value: 1})
     assert node.has_left_node?
     refute node.has_right_node?
 
-    node.add_node(6, "Jim")
+    node.add_node(6, "Jim", {value: 1})
     assert node.has_right_node?
   end
 

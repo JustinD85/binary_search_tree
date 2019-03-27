@@ -9,11 +9,13 @@ class Node
     @name = name
   end
 
-  def add_node(weight, name)
+  def add_node(weight, name, depth)
     if weight < @weight
-      add_left_node(weight, name)
+      depth[:value] += 1
+      add_left_node(weight, name, depth)
     else
-      add_right_node(weight, name)
+      depth[:value] += 1
+      add_right_node(weight, name, depth)
     end
   end
 
@@ -25,17 +27,17 @@ class Node
     @right_node
   end
 
-  def add_left_node(weight, name)
+  def add_left_node(weight, name, depth)
     if has_left_node?
-      @left_node.add_node(weight, name)
+      @left_node.add_node(weight, name, depth)
     else
       @left_node = Node.new(weight, name)
     end
   end
 
-  def add_right_node(weight, name)
+  def add_right_node(weight, name, depth)
     if has_right_node?
-      @right_node.add_node(weight, name)
+      @right_node.add_node(weight, name, depth)
     else
       @right_node = Node.new(weight, name)
     end

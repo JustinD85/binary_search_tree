@@ -8,8 +8,12 @@ class BinarySearchTree
   end
 
   def insert(weight, name)
-    @node = Node.new(weight, name) unless @node
-    @node.add_node(weight, name) if node
+    depth = {value: 0}
+
+    @node.add_node(weight, name, depth) if @node
+    @node = Node.new(weight, name) if !@node
+
+    depth[:value]
   end
 
   def include?(weight)

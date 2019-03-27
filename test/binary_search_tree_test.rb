@@ -17,4 +17,13 @@ class BinarySearchTreeTest < MiniTest::Test
     refute tree.node
   end
 
+  def test_it_should_return_correct_depth_of_tree
+    assert_equal 0, tree.insert(5, "Joe")
+    assert_equal 1, tree.insert(4, "Bill")
+    assert_equal 2, tree.insert(3, "Bob")
+    assert_equal 1, tree.insert(6, "Jill")
+    assert_equal 2, tree.insert(7, "Duck")
+    assert_equal 3, tree.insert(8, "Fluffikins")
+  end
+
 end
