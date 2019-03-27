@@ -6,7 +6,7 @@ class NodeTest < MiniTest::Test
   attr_reader :node
 
   def setup
-    @node = Node.new
+    @node = Node.new(5, "bob")
   end
 
   def test_it_should_exist
@@ -16,18 +16,17 @@ class NodeTest < MiniTest::Test
   def test_it_should_have_default_values
     refute node.has_left_node?
     refute node.has_right_node?
-    refute node.root?
-    refute node.weight
-    refute node.name
-  end
-
-  def test_it_should_be_able_to_add_weight_name
-    node.insert(2, "bob")
-    assert_equal 2, node.weight
+    assert_equal 5,  node.weight
     assert_equal "bob", node.name
   end
 
   def test_it_should_be_able_to_add_node
-    node.add_node(Node.new)
+    node.add_node(4, "Karen")
+    assert node.has_left_node?
+    refute node.has_right_node?
+
+    node.add_node(6, "Jim")
+    assert node.has_right_node?
   end
+
 end
