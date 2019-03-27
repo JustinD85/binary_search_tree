@@ -55,4 +55,12 @@ class Node
     end
   end
 
+  def assign_to_heaviest_node(conclusion)
+    if @right_node
+      @right_node.assign_to_heaviest_node(conclusion)
+    else
+      conclusion[:heaviest_node] = { name => weight}
+    end
+  end
+
 end

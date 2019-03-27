@@ -46,4 +46,9 @@ class BinarySearchTreeTest < MiniTest::Test
     refute tree_2.depthof(9999)
   end
 
+  def test_it_should_return_the_highest_weight_in_tree
+    expected = {"Sharknado 3"=> 92 }
+    assert_equal expected, tree_2.max
+  end
+
 end

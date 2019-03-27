@@ -1,4 +1,5 @@
 require './lib/node'
+require './lib/util'
 
 class BinarySearchTree
   attr_reader :node
@@ -6,6 +7,7 @@ class BinarySearchTree
   def initialize
     @node = nil
   end
+
 
   def insert(weight, name)
     depth = {value: 0}
@@ -17,7 +19,7 @@ class BinarySearchTree
   end
 
   def include?(weight)
-    conclusion = {weight_found: false, depth: 0}
+    conclusion = Util.values_for_conclusion
 
     @node.has_weight?(weight, conclusion)
 
@@ -25,7 +27,7 @@ class BinarySearchTree
   end
 
   def depthof(weight)
-    conclusion = {weight_found: false, depth: 0}
+    conclusion = Util.values_for_conclusion
 
     @node.has_weight?(weight, conclusion)
 
@@ -33,6 +35,11 @@ class BinarySearchTree
   end
 
   def max
+    conclusion = Util.values_for_conclusion
+
+    @node.assign_to_heaviest_node(conclusion)
+
+    conclusion[:heaviest_node]
   end
 
   def min
