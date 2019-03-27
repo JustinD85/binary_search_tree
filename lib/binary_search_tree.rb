@@ -1,7 +1,15 @@
+require './lib/node'
 
 class BinarySearchTree
+  attr_reader :node
+
+  def initialize
+    @node = nil
+  end
 
   def insert(weight, name)
+    @node = Node.new(weight, name) unless @node
+    @node.add_node(weight, name) if node
   end
 
   def include?(weight)

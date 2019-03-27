@@ -13,5 +13,8 @@ class BinarySearchTreeTest < MiniTest::Test
     assert_instance_of BinarySearchTree, tree
   end
 
+  def test_it_should_have_default_value_of_empty_hash
+    refute tree.node
+  end
 
 end

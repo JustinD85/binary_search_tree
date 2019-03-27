@@ -14,9 +14,20 @@ class NodeTest < MiniTest::Test
   end
 
   def test_it_should_have_default_values
-    refute node.left_node
-    refute node.right_node
-    refute node.root
+    refute node.has_left_node?
+    refute node.has_right_node?
+    refute node.root?
+    refute node.weight
+    refute node.name
   end
 
+  def test_it_should_be_able_to_add_weight_name
+    node.insert(2, "bob")
+    assert_equal 2, node.weight
+    assert_equal "bob", node.name
+  end
+
+  def test_it_should_be_able_to_add_node
+    node.add_node(Node.new)
+  end
 end
