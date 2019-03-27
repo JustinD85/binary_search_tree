@@ -17,6 +17,11 @@ class BinarySearchTree
   end
 
   def include?(weight)
+    conclusion = {weight_found: false}
+
+    @node.has_weight?(weight, conclusion)
+
+    conclusion[:weight_found]
   end
 
   def depthof(weight)
