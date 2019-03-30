@@ -67,7 +67,13 @@ class BinarySearchTreeTest < MiniTest::Test
 
   def test_it_should_load_file_and_create_tree
     assert_equal 99, tree.load('./test/nodes.txt')
-    
+  end
+
+  def test_it_should_report_health_of_tree_at_given_depth
+    actual = [[98, 7, 100]]
+    expected = tree_2.health(2)
+
+    assert_equal expected, actual
   end
 
 end

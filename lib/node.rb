@@ -1,17 +1,18 @@
 
 class Node
   attr_reader :weight, :name
+  attr_accessor :depth
 
   def initialize(weight, name)
     @left_node = nil
     @right_node = nil
     @weight = weight
     @name = name
+    @depth = 0
   end
 
   def add_node(weight, name, conclusion)
     conclusion[:depth] += 1
-
     if weight < @weight
       add_left_node(weight, name, conclusion)
     else
@@ -32,6 +33,7 @@ class Node
       @left_node.add_node(weight, name, conclusion)
     else
       @left_node = Node.new(weight, name)
+      @left_node.depth = conclusion[:depth]
     end
   end
 
@@ -40,6 +42,7 @@ class Node
       @right_node.add_node(weight, name, conclusion)
     else
       @right_node = Node.new(weight, name)
+      @right_node.depth = conclusion[:depth]
     end
   end
 
@@ -77,6 +80,23 @@ class Node
     @right_node.sort_nodes(conclusion) if @right_node
   end
 
-  def 
+  def number_of_children(children =  {value: 1 })
+    if @left_node
+      children[:value] += 1
+      @left_node.number_of_children
+    end
+    if @right_node
+      children[:value] += 1
+      @right_node.number_of_children
+    end
+    children[:value]
+  end
+
+  def health_of_node(depth, conclusion, max)
+    @left_node.health_of_node(depth, conclusion, max) if @left_node
+    if depth == @depth
+      conclusion[:health] << [@weight,number_of_children, (number_of_children/max.to_f)*100 ]
+    end
+    @right_node.health_of_node(depth, conclusion, max) if @right_node
   end
 end

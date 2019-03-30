@@ -71,7 +71,9 @@ class BinarySearchTree
   end
 
   def health(depth)
-
+    conclusion = Util.values_for_conclusion
+    @node.health_of_node(depth, conclusion, 5)
+    conclusion[:health]
   end
 
   def leaves
