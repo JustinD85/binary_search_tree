@@ -6,7 +6,8 @@ def Util.values_for_conclusion
     depth: 0,
     heaviest_node: {name: "", value: 0},
     lightest_node: {name:"", value:0},
-    sorted_nodes: []
+    sorted_nodes: [],
+    number_of_nodes:0
   }
 end
 

@@ -65,4 +65,9 @@ class BinarySearchTreeTest < MiniTest::Test
     assert_equal expected, tree_2.sort
   end
 
+  def test_it_should_load_file_and_create_tree
+    assert_equal 99, tree.load('./test/nodes.txt')
+    
+  end
+
 end

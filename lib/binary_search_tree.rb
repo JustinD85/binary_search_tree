@@ -7,15 +7,13 @@ class BinarySearchTree
   def initialize
     @node = nil
   end
-
-
+  
   def insert(weight, name)
-    depth = {value: 0}
-
-    @node.add_node(weight, name, depth) if @node
+    conclusion = Util.values_for_conclusion
+    @node.add_node(weight, name, conclusion) if @node
     @node = Node.new(weight, name) if !@node
 
-    depth[:value]
+    conclusion[:depth]
   end
 
   def include?(weight)
@@ -59,10 +57,21 @@ class BinarySearchTree
   end
 
   def load(file_path)
-
+    conclusion = Util.values_for_conclusion
+    raw_data = File.read(file_path)
+    node_text_by_line = raw_data.split("\n")
+    root = node_text_by_line[node_text_by_line.length/2].split(",")
+    @node = Node.new(root.first.to_i, root.last)
+    node_text_by_line.each do |node_info|
+      node = node_info.split(",")
+      if !@node.has_weight?(node.first.to_i, conclusion)
+        @node.add_node(node.first.to_i, node.last, conclusion)
+      end
+    end.count
   end
 
   def health(depth)
+
   end
 
   def leaves

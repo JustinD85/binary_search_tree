@@ -7,16 +7,16 @@ class NodeTest < MiniTest::Test
   attr_reader :node, :node_2, :conclusion
 
   def setup
+    @conclusion =  Util.values_for_conclusion
     #basic functionality testing
     @node = Node.new(5, "bob")
 
     #for feature testing
     @node_2 = Node.new(5, "bob")
-    @node_2.add_node(61, "Bill & Ted's Excellent Adventure", {value:0})
-    @node_2.add_node(16, "Johnny English", {value:0})
-    @node_2.add_node(92, "Sharknado 3", {value:0})
-    @node_2.add_node(50, "Hannibal Buress: Animal Furnace", {value:0})
-    @conclusion =  Util.values_for_conclusion
+    @node_2.add_node(61, "Bill & Ted's Excellent Adventure", conclusion)
+    @node_2.add_node(16, "Johnny English", conclusion)
+    @node_2.add_node(92, "Sharknado 3", conclusion)
+    @node_2.add_node(50, "Hannibal Buress: Animal Furnace", conclusion)
   end
 
   def test_it_should_exist
@@ -31,11 +31,11 @@ class NodeTest < MiniTest::Test
   end
 
   def test_it_should_be_able_to_add_node
-    node.add_node(4, "Karen", {value: 1})
+    node.add_node(4, "Karen", conclusion)
     assert node.has_left_node?
     refute node.has_right_node?
 
-    node.add_node(6, "Jim", {value: 1})
+    node.add_node(6, "Jim", conclusion)
     assert node.has_right_node?
   end
 
