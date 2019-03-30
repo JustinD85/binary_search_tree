@@ -10,11 +10,11 @@ class Node
   end
 
   def add_node(weight, name, depth)
+    depth[:value] += 1
+
     if weight < @weight
-      depth[:value] += 1
       add_left_node(weight, name, depth)
     else
-      depth[:value] += 1
       add_right_node(weight, name, depth)
     end
   end
@@ -69,6 +69,12 @@ class Node
     else
       conclusion[:lightest_node] = { name => weight}
     end
+  end
+
+  def sort_nodes(conclusion)
+    @left_node.sort_nodes(conclusion) if @left_node
+    conclusion[:sorted_nodes] << {@name => @weight}
+    @right_node.sort_nodes(conclusion) if @right_node
   end
 
 end

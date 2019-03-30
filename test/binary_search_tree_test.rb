@@ -55,4 +55,14 @@ class BinarySearchTreeTest < MiniTest::Test
     expected = {"bob"=>5}
     assert_equal expected, tree_2.min
   end
+
+  def test_it_should_return_an_array_of_nodes_sorted
+    expected = [{"bob"=>5}, {"Johnny English"=>16},
+                {"Hannibal Buress: Animal Furnace"=>50},
+                {"Bill & Ted's Excellent Adventure"=>61},
+                {"Sharknado 3"=>92}]
+
+    assert_equal expected, tree_2.sort
+  end
+
 end

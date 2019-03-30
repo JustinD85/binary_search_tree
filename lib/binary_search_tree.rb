@@ -31,7 +31,7 @@ class BinarySearchTree
 
     @node.has_weight?(weight, conclusion)
 
-    conclusion[:depth] if conclusion[:weight_found]
+    conclusion[:depth] if conclusion[:weight_found] 
   end
 
   def max
@@ -51,9 +51,15 @@ class BinarySearchTree
   end
 
   def sort
+    conclusion = Util.values_for_conclusion
+
+    @node.sort_nodes(conclusion)
+
+    conclusion[:sorted_nodes]
   end
 
   def load(file_path)
+
   end
 
   def health(depth)
