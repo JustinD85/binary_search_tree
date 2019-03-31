@@ -1,4 +1,4 @@
-# Tree of Life
+
 ## Description
 This simple data structure has many uses in the computing world such as in priority queues and associative arrays. 
 
