@@ -8,7 +8,8 @@ def Util.values_for_conclusion
     lightest_node: {name:"", value:0},
     sorted_nodes: [],
     number_of_nodes:0,
-    health: []
+    health: [],
+    number_of_leaves: 0
   }
 end
 

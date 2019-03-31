@@ -99,4 +99,12 @@ class Node
     end
     @right_node.health_of_node(depth, conclusion, max) if @right_node
   end
+
+  def leaves(conclusion)
+    if !@right_node && !@left_node
+      conclusion[:number_of_leaves] += 1
+    end
+    @right_node.leaves(conclusion) if @right_node
+    @left_node.leaves(conclusion) if @left_node
+  end
 end

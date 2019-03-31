@@ -70,10 +70,15 @@ class BinarySearchTreeTest < MiniTest::Test
   end
 
   def test_it_should_report_health_of_tree_at_given_depth
-    actual = [[98, 7, 100]]
-    expected = tree_2.health(2)
+    expected = [[16, 2, 40.0], [92, 1, 20.0]]
+    actual = tree_2.health(2)
 
     assert_equal expected, actual
   end
+
+  def test_it_should_report_total_leaves_in_tree
+    assert_equal 2, tree_2.leaves
+  end
+
 
 end

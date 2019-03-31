@@ -77,12 +77,19 @@ class BinarySearchTree
   end
 
   def leaves
+    conclusion = Util.values_for_conclusion
+    @node.leaves(conclusion)
+    conclusion[:number_of_leaves]
   end
 
   def height
+    conclusion = Util.values_for_conclusion
+    @node.height(conclusion)
+    conclusion[:height]
   end
 
   def delete(weight)
+    @node.delete(weight)
   end
 
 end
