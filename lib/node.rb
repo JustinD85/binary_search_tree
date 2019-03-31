@@ -121,4 +121,16 @@ class Node
       @right_node.height(conclusion)
     end
   end
+
+  def delete(weight)
+    if @weight == weight
+      @name = nil
+    end
+    if @left_node
+      @left_node.delete(weight)
+    end
+    if @right_node
+      @right_node.delete(weight)
+    end
+  end
 end

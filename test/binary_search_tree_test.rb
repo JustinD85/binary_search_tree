@@ -84,4 +84,7 @@ class BinarySearchTreeTest < MiniTest::Test
     assert_equal 3, tree_2.height
   end
 
+  def test_it_should_be_able_to_delete_a_node
+    assert_nil tree_2.delete(5)
+  end
 end
