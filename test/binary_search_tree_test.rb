@@ -80,5 +80,8 @@ class BinarySearchTreeTest < MiniTest::Test
     assert_equal 2, tree_2.leaves
   end
 
+  def test_it_should_return_total_height_of_tree
+    assert_equal 3, tree_2.height
+  end
 
 end

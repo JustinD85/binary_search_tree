@@ -9,7 +9,7 @@ def Util.values_for_conclusion
     sorted_nodes: [],
     number_of_nodes:0,
     health: [],
-    number_of_leaves: 0
+    number_of_leaves: 0,
   }
 end
 

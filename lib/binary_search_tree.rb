@@ -85,7 +85,7 @@ class BinarySearchTree
   def height
     conclusion = Util.values_for_conclusion
     @node.height(conclusion)
-    conclusion[:height]
+    conclusion[:depth]
   end
 
   def delete(weight)

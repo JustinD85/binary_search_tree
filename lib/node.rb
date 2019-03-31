@@ -107,4 +107,18 @@ class Node
     @right_node.leaves(conclusion) if @right_node
     @left_node.leaves(conclusion) if @left_node
   end
+
+  def height(conclusion)
+    if !@left_node && !@right_node
+      if conclusion[:depth] < @depth
+        conclusion[:depth] = @depth
+      end
+    end
+    if @left_node
+      @left_node.height(conclusion)
+    end
+    if @right_node
+      @right_node.height(conclusion)
+    end
+  end
 end
