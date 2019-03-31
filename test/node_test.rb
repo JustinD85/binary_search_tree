@@ -9,14 +9,13 @@ class NodeTest < MiniTest::Test
   def setup
     @conclusion =  Util.values_for_conclusion
     #basic functionality testing
-    @node = Node.new(5, "bob")
+    @node = Node.new(61, "Bill & Ted's Excellent Adventure")
 
     #for feature testing
-    @node_2 = Node.new(5, "bob")
-    @node_2.add_node(61, "Bill & Ted's Excellent Adventure", conclusion)
-    @node_2.add_node(16, "Johnny English", conclusion)
-    @node_2.add_node(92, "Sharknado 3", conclusion)
-    @node_2.add_node(50, "Hannibal Buress: Animal Furnace", conclusion)
+    @node_2 = Node.new(61, "Bill & Ted's Excellent Adventure")
+    @node_2.add_node(16, "Johnny English")
+    @node_2.add_node(92, "Sharknado 3")
+    @node_2.add_node(50, "Hannibal Buress: Animal Furnace")
   end
 
   def test_it_should_exist
@@ -26,21 +25,21 @@ class NodeTest < MiniTest::Test
   def test_it_should_have_default_values
     refute node.has_left_node?
     refute node.has_right_node?
-    assert_equal 5,  node.weight
-    assert_equal "bob", node.name
+    assert_equal 61,  node.weight
+    assert_equal "Bill & Ted's Excellent Adventure", node.name
   end
 
   def test_it_should_be_able_to_add_node
-    node.add_node(4, "Karen", conclusion)
+    node.add_node(4, "Karen")
     assert node.has_left_node?
     refute node.has_right_node?
 
-    node.add_node(6, "Jim", conclusion)
+    node.add_node(62, "Jim")
     assert node.has_right_node?
   end
 
   def test_it_should_return_if_has_weight_or_not
-    node_2.has_weight?(5, conclusion)
+    node_2.has_weight?(61, conclusion)
 
     assert conclusion[:weight_found]
   end
@@ -59,7 +58,7 @@ class NodeTest < MiniTest::Test
 
   def test_it_should_assign_itself_to_lightest_node
     node_2.assign_to_lightest_node(conclusion)
-    expected = {"bob"=>5}
+    expected = {"Johnny English"=>16}
     assert_equal expected, conclusion[:lightest_node]
   end
 

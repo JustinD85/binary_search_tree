@@ -9,7 +9,6 @@ class BinarySearchTreeTest < MiniTest::Test
     @tree = BinarySearchTree.new
 
     @tree_2 = BinarySearchTree.new
-    @tree_2.insert(5, "bob")
     @tree_2.insert(61, "Bill & Ted's Excellent Adventure")
     @tree_2.insert(16, "Johnny English")
     @tree_2.insert(92, "Sharknado 3")
@@ -34,15 +33,15 @@ class BinarySearchTreeTest < MiniTest::Test
   end
 
   def test_it_should_be_able_to_query_for_inclusion_of_weight
-    assert tree_2.include?(5)
+    assert tree_2.include?(61)
     assert tree_2.include?(16)
 
     refute tree_2.include?(21)
   end
 
   def test_it_should_return_depth_of_weight_or_nil
-    assert_equal 1, tree_2.depthof(61)
-    assert_equal 0, tree_2.depthof(5)
+    assert_equal 0, tree_2.depthof(61)
+    assert_equal 2, tree_2.depthof(50)
     refute tree_2.depthof(9999)
   end
 
@@ -52,12 +51,12 @@ class BinarySearchTreeTest < MiniTest::Test
   end
 
   def test_it_should_return_the_lowest_weight_in_tree
-    expected = {"bob"=>5}
+    expected = {"Johnny English"=>16}
     assert_equal expected, tree_2.min
   end
 
   def test_it_should_return_an_array_of_nodes_sorted
-    expected = [{"bob"=>5}, {"Johnny English"=>16},
+    expected = [{"Johnny English"=>16},
                 {"Hannibal Buress: Animal Furnace"=>50},
                 {"Bill & Ted's Excellent Adventure"=>61},
                 {"Sharknado 3"=>92}]
@@ -70,8 +69,8 @@ class BinarySearchTreeTest < MiniTest::Test
   end
 
   def test_it_should_report_health_of_tree_at_given_depth
-    expected = [[16, 2, 40.0], [92, 1, 20.0]]
-    actual = tree_2.health(2)
+    expected = [[16, 2, 50], [92, 1, 25]]
+    actual = tree_2.health(1)
 
     assert_equal expected, actual
   end
@@ -81,10 +80,16 @@ class BinarySearchTreeTest < MiniTest::Test
   end
 
   def test_it_should_return_total_height_of_tree
-    assert_equal 3, tree_2.height
+    assert_equal 2, tree_2.height
   end
 
   def test_it_should_be_able_to_delete_a_node
     assert_nil tree_2.delete(5)
+  end
+
+  def test_it_can_rebalance_itself
+    tree_2.load('./test/nodes.txt')
+    tree_2.rebalance
+    assert_equal  [[50, 99, 100]], tree_2.health(0)
   end
 end
